@@ -1,0 +1,90 @@
+basePath: /v1
+definitions:
+  echo.HTTPError:
+    properties:
+      message: {}
+    type: object
+  repository.GeoItem:
+    properties:
+      city:
+        type: string
+      county:
+        type: string
+      latitude:
+        type: number
+      longitude:
+        type: number
+      organization:
+        type: string
+      postal:
+        type: string
+      region:
+        type: string
+    type: object
+info:
+  contact: {}
+  description: This is geodata server.
+  title: Swagger Geodata API
+  version: "1.0"
+paths:
+  /city/locations:
+    get:
+      description: get location by city
+      parameters:
+      - description: city
+        in: query
+        name: city
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/repository.GeoItem'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/echo.HTTPError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/echo.HTTPError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/echo.HTTPError'
+      summary: Get locations by city
+  /ip/location:
+    get:
+      description: get location by IP
+      parameters:
+      - description: ip
+        in: query
+        name: ip
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/repository.GeoItem'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/echo.HTTPError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/echo.HTTPError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/echo.HTTPError'
+      summary: Get location by IP
+swagger: "2.0"

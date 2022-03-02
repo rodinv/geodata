@@ -1,0 +1,6 @@
+db:
+  path: data/geobase.dat
+
+http:
+  port: 8085
+  timeout: 3s
