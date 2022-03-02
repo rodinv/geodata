@@ -40,10 +40,6 @@ float longitude; // longitude
 
 The database is loaded completely into memory when the application starts.
 
-Two HTTP API methods must be implemented in the application:
-GET /ip/location?ip=123.234.123.234
-GET /city/locations?city=cit_Gbqw4
-
 ### install
 ```
 make mod
